@@ -20,7 +20,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#"> Banner </a></li>
-                        <li><a class="dropdown-item" href="#"> Cardapio </a></li>
+                        <li><a class="dropdown-item" href="./admin/pgCardapio.php"> Cardapio </a></li>
                         <li><a class="dropdown-item" href="#"> Pratos </a></li>
                         <li><a class="dropdown-item" href="#"> Sobre </a></li>
                     </ul>

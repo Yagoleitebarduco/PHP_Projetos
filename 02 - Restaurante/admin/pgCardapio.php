@@ -1,4 +1,4 @@
-<?php require_once 'admin/menu.php'; ?>
+<?php require_once 'menu.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
