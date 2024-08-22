@@ -81,7 +81,9 @@ require_once 'menu.php';
                     <tr>
                         <th scope="row"><?php echo $listas['id_cardapio']?></th>
                         <td><?php echo $listas['cardapio']?></td>
-                        <td><?php echo $listas['foto']?></td>
+                        <td>
+                            <img src="img/<?php echo $listas['foto']?>" width="100px" alt="Imagem">
+                        </td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
