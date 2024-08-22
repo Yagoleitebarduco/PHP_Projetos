@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="conteiner">
+    <div class="conteiner mt-3">
         <!-- Button Modal Cadastro - Inicio -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Adicionar Cardapio
@@ -32,13 +32,24 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel"> Cadastro de Cardapio </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    
+
                     <div class="modal-body">
-                        ...
+                        <form action="op_cardapio.php" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label">Cardapio</label>
+                                <input type="text" class="form-control" name="txt_cardapio"
+                                    placeholder="Digite o nome do Cardapio">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Foto</label>
+                                <input class="form-control" type="file" name="file_foto">
+                            </div>
+                        </form>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </div>

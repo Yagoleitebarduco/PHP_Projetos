@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -20,7 +20,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#"> Banner </a></li>
-                        <li><a class="dropdown-item" href="./admin/pgCardapio.php"> Cardapio </a></li>
+                        <li><a class="dropdown-item" href="pgCardapio.php"> Cardapio </a></li>
                         <li><a class="dropdown-item" href="#"> Pratos </a></li>
                         <li><a class="dropdown-item" href="#"> Sobre </a></li>
                     </ul>
