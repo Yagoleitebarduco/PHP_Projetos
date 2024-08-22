@@ -45,12 +45,13 @@
                                 <label for="formFile" class="form-label">Foto</label>
                                 <input class="form-control" type="file" name="file_foto">
                             </div>
+                            
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </div>
                         </form>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    </div>
                 </div>
             </div>
         </div>
