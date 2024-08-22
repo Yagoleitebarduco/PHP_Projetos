@@ -1,4 +1,7 @@
-<?php require_once 'menu.php'; ?>
+<?php
+require_once 'config.php';
+require_once 'menu.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +48,7 @@
                                 <label for="formFile" class="form-label">Foto</label>
                                 <input class="form-control" type="file" name="file_foto">
                             </div>
-                            
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
@@ -55,6 +58,63 @@
                 </div>
             </div>
         </div>
+
+        <!-- Listagem Inicio -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Cardapio</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <?php
+                $lista = $PDO->query("SELECT * FROM cardapios");
+
+                while ($listas = $lista->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+
+                    <tr>
+                        <th scope="row"><?php echo $listas['id_cardapio']?></th>
+                        <td><?php echo $listas['cardapio']?></td>
+                        <td><?php echo $listas['foto']?></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Editar
+                            </button>
+
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Excluir
+                            </button>
+                        </td>
+                    </tr>
+
+                    <?php
+                }
+                ?>
+                <!-- 
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr> 
+                -->
+            </tbody>
+        </table>
+        <!-- Listagem Fim -->
+
     </div>
 
     <!--
