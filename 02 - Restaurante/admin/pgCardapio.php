@@ -37,7 +37,7 @@ require_once 'menu.php';
                     </div>
 
                     <div class="modal-body">
-                        <form action="op_cardapio.php" method="post" enctype="multipart/form-data">
+                        <form action="op_cardapio.php?acao=cadastrar" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label class="form-label">Cardapio</label>
                                 <input type="text" class="form-control" name="txt_cardapio"
