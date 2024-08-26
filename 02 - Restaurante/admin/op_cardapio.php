@@ -23,5 +23,8 @@ if(!empty($_POST['txt_cardapio'])) {
     }
 }
 
+if(isset($_GET['acao']) && $_GET['acao'] == 'excluir') {
+    echo "Cardapio Excluido: id= " . $_GET['id'] . "<br> Foto: " . $_GET['foto'];
+}
 
 // echo "Cardapio: " . $cardapio . "<br> Foto: " . $foto;

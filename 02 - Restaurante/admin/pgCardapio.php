@@ -79,10 +79,10 @@ require_once 'menu.php';
                     ?>
 
                     <tr>
-                        <th scope="row"><?php echo $listas['id_cardapio']?></th>
-                        <td><?php echo $listas['cardapio']?></td>
+                        <th scope="row"><?php echo $listas['id_cardapio'] ?></th>
+                        <td><?php echo $listas['cardapio'] ?></td>
                         <td>
-                            <img src="img/<?php echo $listas['foto']?>" width="100px" alt="Imagem">
+                            <img src="img/<?php echo $listas['foto'] ?>" width="100px" alt="Imagem">
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -91,11 +91,30 @@ require_once 'menu.php';
                             </button>
 
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                                data-bs-target="#modalExcluir<?php echo $listas['id_cardapio']?>">
                                 Excluir
                             </button>
                         </td>
                     </tr>
+
+                    <!-- Modal Excluir - Inicio -->
+                    <div class="modal fade" id="modalExcluir<?php echo  $listas['id_cardapio']?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Deseja Excluir o Cardapio</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <a href="op_cardapio.php?acao=excluir&id=<?php echo $listas['id_cardapio']?>&op_cardapio.php?acao=excluir&foto=<?php echo $listas['foto']?>" class="btn btn-primary">Sim</a>
+                                    <button class="btn btn-danger" data-bs-dismiss="modal">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal-Excluir - Fim -->
 
                     <?php
                 }
