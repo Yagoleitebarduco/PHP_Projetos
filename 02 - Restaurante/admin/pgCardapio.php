@@ -86,20 +86,59 @@ require_once 'menu.php';
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                                data-bs-target="#modalEditar<?php echo $listas['id_cardapio'] ?>">
                                 Editar
                             </button>
 
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalExcluir<?php echo $listas['id_cardapio']?>">
+                                data-bs-target="#modalExcluir<?php echo $listas['id_cardapio'] ?>">
                                 Excluir
                             </button>
                         </td>
                     </tr>
 
+                    <!-- Modal Editar - Inicio -->
+                    <div class="modal fade" id="modalEditar<?php echo $listas['id_cardapio'] ?>" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar o Cardapio</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form
+                                        action="op_cardapio.php?acao=editar&id=<?php echo $listas['id_cardapio'] ?>&op_cardapio.php?acao=editar&foto=<?php echo $listas['foto'] ?>"
+                                        method="post" enctype="multipart/form-data">
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Cardapio</label>
+                                            <input type="text" class="form-control" name="txt_cardapio"
+                                                placeholder="Digite o nome do Cardapio"
+                                                value="<?php echo $listas['cardapio'] ?>">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Foto</label>
+                                            <input class="form-control" type="file" name="file_foto">
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Editar - Fim -->
+
+
                     <!-- Modal Excluir - Inicio -->
-                    <div class="modal fade" id="modalExcluir<?php echo  $listas['id_cardapio']?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
+                    <div class="modal fade" id="modalExcluir<?php echo $listas['id_cardapio'] ?>" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -108,7 +147,8 @@ require_once 'menu.php';
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <a href="op_cardapio.php?acao=excluir&id=<?php echo $listas['id_cardapio']?>&op_cardapio.php?acao=excluir&foto=<?php echo $listas['foto']?>" class="btn btn-primary">Sim</a>
+                                    <a href="op_cardapio.php?acao=excluir&id=<?php echo $listas['id_cardapio'] ?>&op_cardapio.php?acao=excluir&foto=<?php echo $listas['foto'] ?>"
+                                        class="btn btn-primary">Sim</a>
                                     <button class="btn btn-danger" data-bs-dismiss="modal">Não</button>
                                 </div>
                             </div>

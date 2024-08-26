@@ -41,5 +41,38 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'excluir') {
     header("Location: pgCardapio.php");
 }
 
+// Editar
+if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
+    // echo "Cardapio Excluido: id= " . $_GET['id'] . "<br> Foto: " . $_GET['foto'];
+
+    $id = $_GET['id'];
+    $fotoDB = $_GET['foto'];
+
+    // TESTAR
+    if ($_FILES['file_foto']['size'] == 0) {
+        // echo 'Sem Foto';
+        $edit = $PDO->prepare("UPDATE cardapios SET cardapio = ? WHERE id_cardapio = ?");
+        $edit->bindValue(1, $cardapio);
+        $edit->bindValue(2, $id);
+        $edit->execute();
+
+        header("Location: pgCardapio.php");
+    } else {
+        // echo 'Com Foto';
+
+        unlink('img/' . $fotoDB);
+
+        if (move_uploaded_file($foto_temp, $destino)) {
+            $edit = $PDO->prepare("UPDATE cardapios SET cardapio = ?, foto = ? WHERE id_cardapio = ?");
+            $edit->bindValue(1, $cardapio);
+            $edit->bindValue(2, $foto);
+            $edit->bindValue(3, $id);
+
+            $edit->execute();
+
+            header("Location: pgCardapio.php");
+        }
+    }
+}
 
 // echo "Cardapio: " . $cardapio . "<br> Foto: " . $foto;
