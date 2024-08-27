@@ -21,7 +21,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="pg_banner.php"> Banner </a></li>
                         <li><a class="dropdown-item" href="pgCardapio.php"> Cardapio </a></li>
-                        <li><a class="dropdown-item" href="#"> Pratos </a></li>
+                        <li><a class="dropdown-item" href="pg_prato.php"> Pratos </a></li>
                         <li><a class="dropdown-item" href="#"> Sobre </a></li>
                     </ul>
                 </li>
