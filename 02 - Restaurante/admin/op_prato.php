@@ -2,7 +2,8 @@
 
 require_once "config.php";
 
-if (!empty($_POST['txt_cardapio'])) {
+if ($_FILES['file_foto']['size'] != 0) {
+    $prato = $_POST['txt_prato'];
     $cardapio = $_POST['txt_cardapio'];
     $foto = $_FILES['file_foto']['name'];
 
@@ -13,66 +14,59 @@ if (!empty($_POST['txt_cardapio'])) {
     $destino = "img/" . $foto;
 }
 
-// Cadastra
+// Cadastrar
 if (isset($_GET['acao']) && $_GET['acao'] == 'cadastrar') {
     if (move_uploaded_file($foto_temp, $destino)) {
-        $insert = $PDO->prepare("INSERT INTO cardapios (cardapio, foto) VALUES (?, ?)");
+        $insert = $PDO->prepare("INSERT INTO pratos (id_cardapio, prato, foto) VALUES (?, ?, ?)");
         $insert->bindValue(1, $cardapio);
-        $insert->bindValue(2, $foto);
+        $insert->bindValue(2, $prato);
+        $insert->bindValue(3, $foto);
 
         $insert->execute();
 
-        header("Location: pgCardapio.php");
+        header("Location: pg_prato.php");
     }
 }
 
 // Excluir
 if (isset($_GET['acao']) && $_GET['acao'] == 'excluir') {
-    // echo "Cardapio Excluido: id= " . $_GET['id'] . "<br> Foto: " . $_GET['foto'];
 
     $id = $_GET['id'];
     $foto = $_GET['foto'];
 
-    $del = $PDO->prepare("DELETE FROM cardapios WHERE id_cardapio = ? ");
+    $del = $PDO->prepare("DELETE FROM pratos WHERE id_prato = ? ");
     $del->bindValue(1, $id);
     $del->execute();
 
     unlink('img/' . $foto);
-    header("Location: pgCardapio.php");
+    header("Location: pg_prato.php");
 }
 
 // Editar
 if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
-    // echo "Cardapio Excluido: id= " . $_GET['id'] . "<br> Foto: " . $_GET['foto'];
-
     $id = $_GET['id'];
     $fotoDB = $_GET['foto'];
 
     // TESTAR
     if ($_FILES['file_foto']['size'] == 0) {
-        // echo 'Sem Foto';
-        $edit = $PDO->prepare("UPDATE cardapios SET cardapio = ? WHERE id_cardapio = ?");
-        $edit->bindValue(1, $cardapio);
+        $edit = $PDO->prepare("UPDATE pratos SET prato = ? WHERE id_prato = ?");
+        $edit->bindValue(1, $prato);
         $edit->bindValue(2, $id);
         $edit->execute();
 
-        header("Location: pgCardapio.php");
+        header("Location: pg_prato.php");
     } else {
-        // echo 'Com Foto';
-
         unlink('img/' . $fotoDB);
 
         if (move_uploaded_file($foto_temp, $destino)) {
-            $edit = $PDO->prepare("UPDATE cardapios SET cardapio = ?, foto = ? WHERE id_cardapio = ?");
-            $edit->bindValue(1, $cardapio);
+            $edit = $PDO->prepare("UPDATE pratos SET prato = ?, foto = ? WHERE id_prato = ?");
+            $edit->bindValue(1, $prato);
             $edit->bindValue(2, $foto);
             $edit->bindValue(3, $id);
 
             $edit->execute();
 
-            header("Location: pgCardapio.php");
+            header("Location: pg_prato.php");
         }
     }
 }
-
-// echo "Cardapio: " . $cardapio . "<br> Foto: " . $foto;

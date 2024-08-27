@@ -40,7 +40,7 @@ require_once 'menu.php';
                         <form action="op_prato.php?acao=cadastrar" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label class="form-label">Prato</label>
-                                <input type="text" class="form-control" name="txt_Prato"
+                                <input type="text" class="form-control" name="txt_prato"
                                     placeholder="Digite o nome do Prato">
                             </div>
 
@@ -48,7 +48,7 @@ require_once 'menu.php';
                                 <select class="form-select" name="txt_cardapio">
                                     <option selected>Selecione o Cardapio</option>
                                     <?php
-                                     $sql = $PDO->query("SELECT * FROM cardapios");
+                                     $sql = $PDO->query("SELECT * FROM cardapios ORDER BY cardapio");
 
                                      while ($listas = $sql->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
@@ -89,28 +89,27 @@ require_once 'menu.php';
             </thead>
 
             <tbody>
-
                 <?php
-                $lista = $PDO->query("SELECT * FROM pratos");
+                $lista = $PDO->query("SELECT p.id_pratos, p.prato, p.foto, c.cardapio, c.id_cardapio FROM pratos p INNER JOIN cardapios c ON p.id_cardapio = c.id_cardapio");
 
                 while ($listas = $lista->fetch(PDO::FETCH_ASSOC)) {
                     ?>
 
                     <tr>
-                        <th scope="row"><?php echo $listas['id_Prato'] ?></th>
-                        <th scope="row"><?php echo $listas['prato'] ?></th>
+                        <th scope="row"><?php echo $listas['id_pratos'] ?></th>
+                        <th><?php echo $listas['prato'] ?></th>
                         <td><?php echo $listas['cardapio'] ?></td>
                         <td>
                             <img src="img/<?php echo $listas['foto'] ?>" width="100px" alt="Imagem">
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalEditar<?php echo $listas['id_Prato'] ?>">
+                                data-bs-target="#modalEditar<?php echo $listas['id_pratos'] ?>">
                                 Editar
                             </button>
 
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalExcluir<?php echo $listas['id_Prato'] ?>">
+                                data-bs-target="#modalExcluir<?php echo $listas['id_pratos'] ?>">
                                 Excluir
                             </button>
                         </td>
