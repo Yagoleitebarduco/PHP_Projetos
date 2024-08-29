@@ -48,14 +48,14 @@ require_once 'menu.php';
                                 <select class="form-select" name="txt_cardapio">
                                     <option selected>Selecione o Cardapio</option>
                                     <?php
-                                     $sql = $PDO->query("SELECT * FROM cardapios ORDER BY cardapio");
+                                    $sql = $PDO->query("SELECT * FROM cardapios ORDER BY cardapio");
 
-                                     while ($listas = $sql->fetch(PDO::FETCH_ASSOC)) {
-                                    ?>
+                                    while ($listas = $sql->fetch(PDO::FETCH_ASSOC)) {
+                                        ?>
 
-                                    <option value="<?php echo $listas['id_cardapio']?>"> 
-                                        <?php echo $listas['cardapio']?>
-                                    </option>
+                                        <option value="<?php echo $listas['id_cardapio'] ?>">
+                                            <?php echo $listas['cardapio'] ?>
+                                        </option>
 
                                     <?php } ?>
                                 </select>
@@ -116,26 +116,48 @@ require_once 'menu.php';
                     </tr>
 
                     <!-- Modal Editar - Inicio -->
-                    <div class="modal fade" id="modalEditar<?php echo $listas['id_Prato'] ?>" tabindex="-1"
+                    <div class="modal fade" id="modalEditar<?php echo $listas['id_pratos'] ?>" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar o Prato</h1>
+                                    <h1 class="modal-title fs-5" id="modalEditar">Editar o Prato</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
 
                                 <div class="modal-body">
                                     <form
-                                        action="op_prato.php?acao=editar&id=<?php echo $listas['id_Prato'] ?>&op_prato.php?acao=editar&foto=<?php echo $listas['foto'] ?>"
+                                        action="op_prato.php?acao=editar&id=<?php echo $listas['id_pratos'] ?>&op_prato.php?acao=editar&foto=<?php echo $listas['foto'] ?>"
                                         method="post" enctype="multipart/form-data">
 
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" name="txt_Prato" <label
-                                                class="form-label">Prato</label>
+                                            <input type="text" class="form-control" name="txt_Prato" 
                                             placeholder="Digite o nome do Prato"
-                                            value="<?php echo $listas['prato'] ?>">
+                                            value="<?php echo $listas['prato'] ?>"><label
+                                                class="form-label">Prato</label>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="" class="form-label"> Selecione o Cardapio </label>
+                                            <select class="form-select" name="txt_cardapio">
+                                                <option selected>Selecione o Cardapio</option>
+                                                <?php
+                                                $sql = $PDO->query("SELECT * FROM cardapios ORDER BY cardapio");
+
+                                                while ($listasC = $sql->fetch(PDO::FETCH_ASSOC)) {
+                                                    if ($listas['id_cardapio'] == $listasC['id_cardapio']) {
+                                                        ?>
+                                                        <option value="<?php echo $listasC['id_cardapio'] ?>">
+                                                            <?php echo $listasC['cardapio'] ?>
+                                                        </option>
+                                                    <?php } else { ?>
+                                                        <option value="<?php echo $listasC['id_cardapio'] ?>">
+                                                            <?php echo $listasC['cardapio'] ?>
+                                                        </option>
+                                                    <?php }
+                                                } ?>
+                                            </select>
                                         </div>
 
                                         <div class="mb-3">
@@ -155,7 +177,7 @@ require_once 'menu.php';
 
 
                     <!-- Modal Excluir - Inicio -->
-                    <div class="modal fade" id="modalExcluir<?php echo $listas['id_Prato'] ?>" tabindex="-1"
+                    <div class="modal fade" id="modalExcluir<?php echo $listas['id_pratos'] ?>" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -165,7 +187,7 @@ require_once 'menu.php';
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <a href="op_prato.php?acao=excluir&id=<?php echo $listas['id_Prato'] ?>&op_prato.php?acao=excluir&foto=<?php echo $listas['foto'] ?>"
+                                    <a href="op_prato.php?acao=excluir&id=<?php echo $listas['id_pratos'] ?>&op_prato.php?acao=excluir&foto=<?php echo $listas['foto'] ?>"
                                         class="btn btn-primary">Sim</a>
                                     <button class="btn btn-danger" data-bs-dismiss="modal">Não</button>
                                 </div>
