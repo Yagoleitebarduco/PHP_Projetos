@@ -3,14 +3,14 @@ require 'environment.php';
 
 $config = array();
 if (ENVIRONMENT == 'development') {
-    define("BASE_URL", "http://localhost/php/MVC/");
-    $config['dbname'] = 'mvc';
+    define("BASE_URL", "http://localhost/php/crud_mvc/");
+    $config['dbname'] = 'crud_mvc';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = '';
 } else {
     define("BASE_URL", "http://meusite.com.br");
-    $config['dbname'] = 'mvc';
+    $config['dbname'] = 'crud_mvc';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = '';

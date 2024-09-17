@@ -7,7 +7,7 @@ class controller{
 
     // trazer os arquivos da view (menu.php)
     public function loadTemplate($viewName, $viewData = array()){
-        require 'view/template.php';
+        require 'views/template.php';
     }
 
     public function loadViewInTemplate($viewName, $viewData = array()){

@@ -1,12 +1,12 @@
 <?php
 
-class homeController{
+class homeController extends controller{
+    public function index(): void{
+        $dados = array();
 
-    public function index(){
-        echo 'Funcinando...';
-    }
-
-    public function teste(){
-        echo 'Ainda funcinando...';
+        $contatos = new Contatos();
+        $dados['lista'] = $contatos->getAll();
+        
+        $this->loadtemplate('home', $dados);
     }
 }
