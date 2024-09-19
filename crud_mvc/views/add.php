@@ -1,3 +1,9 @@
+<?php
+if($error == 'exist'){
+    echo '<p class="alert alert-danger">Email já Cadastrado</p>';
+} 
+?>
+
 <div class="container mt-3">
     <h3>Adicionar</h3>
 
